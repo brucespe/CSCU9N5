@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+  <!-- By student : 2721301 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>Interesting Algorithms</title>
+
+  <script>
+    /* javascript for button clicks*/
+    function clickBtn(btn) {
+
+      /* This should reset animation on each nav bar click but doesnt work*/
+      document.getElementById("col1").style.animationPlayState = "paused";
+      document.getElementById("col2").style.animationPlayState = "paused";
+      document.getElementById("col3").style.animationPlayState = "paused";
+
+      /* Gets the scene that is being clicked on and changes page*/
+      var bname = "#scene" + btn;
+      $("[id^='scene']").hide();
+      $(bname).show();
+    }
+
+  </script>
+
+
+  <style>
+    /* changes the background colour for BS heading container*/
+    .jumbotron {
+      background-color: #FFFFE9;
+    }
+
+    /* Css for main header of entire site*/
+    h1.welcome {
+      font-family: serif;
+      color: rgb(0, 0, 0);
+
+      text-align: center;
+      font-size: 50px;
+      text-shadow: 2px 2px lightgrey;
+    }
+
+
+    /* Animation for column 1*/
+    @keyframes animcol1 {
+      0% {
+        left: 16px;
+        background-color: silver;
+      }
+
+      100% {
+        left: 200px;
+        background-color: red;
+      }
+    }
+
+
+    /* Animation for column 2*/
+    @keyframes animcol2 {
+      0% {
+        left: 60px;
+        background-color: silver;
+      }
+
+      100% {
+        left: 288px;
+        background-color: red;
+      }
+    }
+
+    /* Animation for column 3*/
+    @keyframes animcol3 {
+      0% {
+
+        left: 104px;
+        background-color: silver;
+      }
+
+      100% {
+        left: 244px;
+        background-color: red;
+      }
+    }
+
+
+    /* Css for data column 1*/
+    #col1 {
+      background-color: silver;
+      width: 40px;
+      height: 300px;
+      position: absolute;
+      bottom: 20px;
+      left: 16px;
+      border-style: solid;
+
+      animation-name: animcol1;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+    }
+
+    /* background colour for the slideshow container*/
+    #slides {
+      background-color: lightblue;
+    }
+
+    /* Css for data column 2*/
+    #col2 {
+      background-color: silver;
+      width: 40px;
+      height: 100px;
+      bottom: 20px;
+      left: 60px;
+      position: absolute;
+      border-style: solid;
+
+      animation-name: animcol2;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+    }
+
+    #content-wrap {
+      padding-bottom: 2.5rem;
+      /* Footer height */
+    }
+
+    /* Css for data column 3*/
+    #col3 {
+      background-color: silver;
+      width: 40px;
+      height: 200px;
+      position: absolute;
+      bottom: 20px;
+      left: 104px;
+      border-style: solid;
+
+      animation-name: animcol3;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+    }
+
+    /* background colour for the slideshow buttons*/
+    .carousel-control-prev {
+      background-color: black;
+    }
+
+    .carousel-control-next {
+      background-color: black;
+    }
+
+    /* Animation for incorrect button*/
+    @keyframes animInc {
+      0% {
+        background-color: silver;
+      }
+
+      100% {
+        transform: rotate(180deg);
+        /* rotates the button */
+        background-color: red;
+      }
+    }
+
+    /* Animation for correct button*/
+    @keyframes animC {
+      0% {
+
+        background-color: silver;
+      }
+
+      100% {
+        transform: rotate(360deg);
+        /* rotates the button */
+        background-color: green;
+      }
+    }
+
+    /* css for the first quiz button*/
+    #qBut1 {
+      background-color: silver;
+      width: 180px;
+      height: 50px;
+      position: absolute;
+      bottom: 300px;
+      left: 450px;
+      border-style: solid;
+
+      animation-name: animInc;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+
+
+    }
+
+    /* css for the second quiz button*/
+    #qBut2 {
+      background-color: silver;
+      width: 180px;
+      height: 50px;
+      position: absolute;
+      bottom: 240px;
+      left: 450px;
+      border-style: solid;
+
+      animation-name: animInc;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+    }
+
+    /* css for the third quiz button*/
+    #qBut3 {
+      background-color: silver;
+      width: 180px;
+      height: 50px;
+      position: absolute;
+      bottom: 180px;
+      left: 450px;
+      border-style: solid;
+
+      animation-name: animC;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+    }
+
+    /* css for the fourth quiz button*/
+    #qBut4 {
+      background-color: silver;
+      width: 180px;
+      height: 50px;
+      position: absolute;
+      bottom: 120px;
+      left: 450px;
+      border-style: solid;
+
+      animation-name: animInc;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+
+    }
+
+    /* A position for media elements*/
+    .imgContainer {
+      position: relative;
+      text-align: center;
+      color: black;
+
+    }
+
+    #page-container {
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Make the image fully responsive */
+    .carousel-innerxx img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Css for entire body*/
+    body {
+      background-color: #FFFFE9;
+      overflow: scroll;
+    }
+
+    /* Css for buttons*/
+    .btn {
+      background-color: black;
+    }
+
+
+    /* Css for footer of each page*/
+    footer {
+      text-align: center;
+      bottom: 0px;
+      padding: 3px;
+      background-color: lightblue;
+      color: rgb(0, 0, 0);
+
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      height: 2.5rem;
+      /* Footer height */
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- The welcome banner at top of page-->
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="jumbotron text-center">
+        <h1 class="welcome">Interesting Algorithms</h1>
+
+      </div>
+
+      <!-- The navigation bar at top of page-->
+      <div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#scene0">Home</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#scene1">Selection
+          sort</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#scene2">Insertion
+          sort</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#scene3">Merge sort</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#scene4">Bucket Sort</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#scene5">Quick Sort</button>
+      </div>
+
+
+      <!-- The main container for each page-->
+      <div id="stage" class="container" style="margin-top:30px">
+
+        <!-- Intro screen (scene0) -->
+        <div id="scene0" class="collapse" data-parent="#stage">
+          <h2>Introduction</h2>
+          <p>
+            This is be a paragraph of introduction to user when they visit the site.
+          </p>
+          <p>
+            To use the site, visit each page to learn a bit about the selected algorithm. You can then interact with the media element which will give 
+            you a better understanding of the selected algorithm. Pay attention there will be a quiz at the end!
+          </p>
+        </div>
+
+        <!-- Slideshow screen (scene1) -->
+        <div id="scene1" class="collapse" data-parent="#stage">
+          <h2>Selection sort</h2>
+
+        <!-- Prints paragraphs intended to be algorithm information -->
+          <p> Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Suspendisse ac ligula suscipit, aliquet
+            diam
+            id, sollicitudin sapien.
+            Phasellus eu ligula sit <b>amet nulla luctus</b> tempor. Vestibulum convallis elit non suscipit ultrices.
+            Aliquam id tellus sollicitudin, laoreet orci vel, pharetra tellus. Maecenas consequat auctor felis, sed
+            tincidunt sem sodales et.
+            Aenean ac aliquam lectus. <b>Vivamus tincidunt</b>, elit et aliquam pellentesque, ligula augue semper velit,
+            <b>eget vestibulum nisl</b> turpis a nisi.
+            Donec ac mauris quis urna dapibus sagittis. Morbi venenatis, mauris non mattis ultricies, velit mauris
+            luctus
+            magna, id blandit neque diam id mi.
+            <br><br>
+
+            Mauris vestibulum cursus bibendum. Donec commodo lectus vel dui vehicula consequat. Orci varius natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Praesent <b>feugiat vulputate elit a porta</b>. Integer vulputate nulla diam, et auctor neque consectetur
+            nec.
+            Donec et vehicula ex.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <b>Morbi fermentum
+              lacinia</b> nibh at congue.
+            Fusce gravida, risus et sollicitudin bibendum, neque lacus ultrices risus, id mollis massa enim sed massa.
+            Nulla
+            dignissim id sapien id condimentum.
+            Donec hendrerit quam sit amet sem placerat posuere. Fusce laoreet et nisi nec efficitur. Suspendisse <b>sed
+              dui
+              nec ipsum</b> tristique porttitor.
+            Vivamus consequat eros maximus, finibus sapien nec, egestas nunc. </p>
+          <div class="imgContainer">
+            <div id="slides" class="carousel slide" data-ride="carousel" style="position: static;">
+
+              <!-- Indicators -->
+              <ul class="carousel-indicators">
+                <li data-target="#slides" data-slide-to="0" class="active"></li>
+                <li data-target="#slides" data-slide-to="1"></li>
+                <li data-target="#slides" data-slide-to="2"></li>
+                <li data-target="#slides" data-slide-to="3"></li>
+                <li data-target="#slides" data-slide-to="4"></li>
+                <li data-target="#slides" data-slide-to="5"></li>
+                <li data-target="#slides" data-slide-to="6"></li>
+              </ul>
+
+              <!-- The slideshow -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="assignMedia/cap1.JPG" width=500 height=600 alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                  <img src="assignMedia/cap2.JPG" width=500 height=600 alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                  <img src="assignMedia/cap3.JPG" width=500 height=600 alt="Slide 3">
+                </div>
+                <div class="carousel-item">
+                  <img src="assignMedia/cap4.JPG" width=500 height=600 alt="Slide 4">
+                </div>
+                <div class="carousel-item">
+                  <img src="assignMedia/cap5.JPG" width=500 height=600 alt="Slide 5">
+                </div>
+                <div class="carousel-item">
+                  <img src="assignMedia/cap6.JPG" width=500 height=600 alt="Slide 6">
+                </div>
+                <div class="carousel-item">
+                  <img src="assignMedia/cap7.JPG" width=500 height=600 alt="Slide 7">
+                </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="carousel-control-prev" href="#slides" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#slides" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video screen (scene2) -->
+        <div id="scene2" class="collapse" data-parent="#stage">
+          <h2 class="slide">Insertion sort</h2>
+          <p> Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Suspendisse ac ligula suscipit, aliquet
+            diam
+            id, sollicitudin sapien.
+            Phasellus eu ligula sit <b>amet nulla luctus</b> tempor. Vestibulum convallis elit non suscipit ultrices.
+            Aliquam id tellus sollicitudin, laoreet orci vel, pharetra tellus. Maecenas consequat auctor felis, sed
+            tincidunt sem sodales et.
+            Aenean ac aliquam lectus. <b>Vivamus tincidunt</b>, elit et aliquam pellentesque, ligula augue semper velit,
+            <b>eget vestibulum nisl</b> turpis a nisi.
+            Donec ac mauris quis urna dapibus sagittis. Morbi venenatis, mauris non mattis ultricies, velit mauris
+            luctus
+            magna, id blandit neque diam id mi.
+            <br><br>
+
+            Mauris vestibulum cursus bibendum. Donec commodo lectus vel dui vehicula consequat. Orci varius natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Praesent <b>feugiat vulputate elit a porta</b>. Integer vulputate nulla diam, et auctor neque consectetur
+            nec.
+            Donec et vehicula ex.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <b>Morbi fermentum
+              lacinia</b> nibh at congue.
+            Fusce gravida, risus et sollicitudin bibendum, neque lacus ultrices risus, id mollis massa enim sed massa.
+            Nulla
+            dignissim id sapien id condimentum.
+            Donec hendrerit quam sit amet sem placerat posuere. Fusce laoreet et nisi nec efficitur. Suspendisse <b>sed
+              dui
+              nec ipsum</b> tristique porttitor.
+            Vivamus consequat eros maximus, finibus sapien nec, egestas nunc. </p>
+
+          <!-- The video -->
+          <p class="video" style="text-align: center;">
+            <video id="vid" width="500" height="300" controls>
+              <Source src="assignMedia/insertionSort.mp4" types="video/mp4">
+            </video>
+          </p>
+          <p style="text-align: center;">
+            <button onclick="document.getElementById('vid').play();">Play</button>
+            <button onclick="document.getElementById('vid').pause();">Pause</button>
+            <button onclick="document.getElementById('vid').currentTime = 0;">Rewind</button>
+          </p>
+        </div>
+
+        <!-- Canvas screen (scene3) -->
+        <div id="scene3" class="collapse" data-parent="#stage">
+          <h2 class="slide">Merge sort</h2>
+          <p> Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Suspendisse ac ligula suscipit, aliquet
+            diam
+            id, sollicitudin sapien.
+            Phasellus eu ligula sit <b>amet nulla luctus</b> tempor. Vestibulum convallis elit non suscipit ultrices.
+            Aliquam id tellus sollicitudin, laoreet orci vel, pharetra tellus. Maecenas consequat auctor felis, sed
+            tincidunt sem sodales et.
+            Aenean ac aliquam lectus. <b>Vivamus tincidunt</b>, elit et aliquam pellentesque, ligula augue semper velit,
+            <b>eget vestibulum nisl</b> turpis a nisi.
+            Donec ac mauris quis urna dapibus sagittis. Morbi venenatis, mauris non mattis ultricies, velit mauris
+            luctus
+            magna, id blandit neque diam id mi.
+            <br><br>
+
+            Mauris vestibulum cursus bibendum. Donec commodo lectus vel dui vehicula consequat. Orci varius natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Praesent <b>feugiat vulputate elit a porta</b>. Integer vulputate nulla diam, et auctor neque consectetur
+            nec.
+            Donec et vehicula ex.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <b>Morbi fermentum
+              lacinia</b> nibh at congue.
+            Fusce gravida, risus et sollicitudin bibendum, neque lacus ultrices risus, id mollis massa enim sed massa.
+            Nulla
+            dignissim id sapien id condimentum.
+            Donec hendrerit quam sit amet sem placerat posuere. Fusce laoreet et nisi nec efficitur. Suspendisse <b>sed
+              dui
+              nec ipsum</b> tristique porttitor.
+            Vivamus consequat eros maximus, finibus sapien nec, egestas nunc. </p>
+
+          <!-- The canvas -->
+          <canvas id="myGraphic" width="600" height="500" style="border:1px solid #000000; margin-left: 45px;"></canvas>
+          <script>
+            var canvaso = document.getElementById('myGraphic');
+            var context = canvaso.getContext('2d');
+
+            context.lineWidth = 4;
+
+            /* First columns of data start*/
+            context.strokeStyle = '#000000';
+            context.strokeRect(0, 206, 33, 293);
+
+            context.strokeStyle = '#000000';
+            context.strokeRect(33, 102, 40, 396);
+
+            context.strokeStyle = '#000000';
+            context.strokeRect(73, 135, 39, 363);
+            /* First columns of data end*/
+
+
+            /* First arrow start*/
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(140, 300);
+            context.lineTo(175, 300);
+            context.stroke();
+
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(175, 300);
+            context.lineTo(160, 290);
+            context.stroke();
+            context.closePath();
+
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(175, 300);
+            context.lineTo(160, 310);
+            context.stroke();
+            context.closePath();
+            /* First arrow end*/
+
+
+            /* Middle columns of data start*/
+            context.strokeStyle = '#000000';
+            context.strokeRect(225, 98, 37, 400);
+
+
+            context.strokeStyle = '#000000';
+            context.strokeRect(261, 203, 41, 296);
+
+            context.strokeStyle = '#000000';
+            context.strokeRect(302, 131, 38, 367);
+            /* Middle columns of data end*/
+
+
+            /* Second arrow start*/
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(370, 300);
+            context.lineTo(405, 300);
+            context.stroke();
+
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(405, 300);
+            context.lineTo(390, 290);
+            context.stroke();
+            context.closePath();
+
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(405, 300);
+            context.lineTo(390, 310);
+            context.stroke();
+            context.closePath();
+            /* Second arrow end*/
+
+
+            /* Last columns of data start*/
+            context.strokeStyle = '#000000';
+            context.strokeRect(442, 95, 37, 404);
+
+            context.strokeStyle = '#000000';
+            context.strokeRect(478, 130, 40, 369);
+
+            context.strokeStyle = '#000000';
+            context.strokeRect(518, 196, 35, 303);
+        /* Last columns of data end*/
+
+          </script>
+        </div>
+
+
+        <!-- Animation screen (scene4) -->
+        <div id="scene4" class="collapse" data-parent="#stage">
+          <h2 class="slide">Bucket sort</h2>
+          <p> Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Suspendisse ac ligula suscipit, aliquet
+            diam
+            id, sollicitudin sapien.
+            Phasellus eu ligula sit <b>amet nulla luctus</b> tempor. Vestibulum convallis elit non suscipit ultrices.
+            Aliquam id tellus sollicitudin, laoreet orci vel, pharetra tellus. Maecenas consequat auctor felis, sed
+            tincidunt sem sodales et.
+            Aenean ac aliquam lectus. <b>Vivamus tincidunt</b>, elit et aliquam pellentesque, ligula augue semper velit,
+            <b>eget vestibulum nisl</b> turpis a nisi.
+            Donec ac mauris quis urna dapibus sagittis. Morbi venenatis, mauris non mattis ultricies, velit mauris
+            luctus
+            magna, id blandit neque diam id mi.
+            <br><br>
+
+            Mauris vestibulum cursus bibendum. Donec commodo lectus vel dui vehicula consequat. Orci varius natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Praesent <b>feugiat vulputate elit a porta</b>. Integer vulputate nulla diam, et auctor neque consectetur
+            nec.
+            Donec et vehicula ex.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <b>Morbi fermentum
+              lacinia</b> nibh at congue.
+            Fusce gravida, risus et sollicitudin bibendum, neque lacus ultrices risus, id mollis massa enim sed massa.
+            Nulla
+            dignissim id sapien id condimentum.
+            Donec hendrerit quam sit amet sem placerat posuere. Fusce laoreet et nisi nec efficitur. Suspendisse <b>sed
+              dui
+              nec ipsum</b> tristique porttitor.
+            Vivamus consequat eros maximus, finibus sapien nec, egestas nunc. </p>
+
+
+
+          <!-- The interactable data sets -->
+          <div class="imgContainer">
+            <h2 class="slide">Click the data to sort it!</h2>
+            <img src="assignMedia/blank.jpg" width=500 height=400 alt="A blank image">
+            <div id=col1 onclick="col1()"></div>
+            <div id=col2 onclick="col2()"></div>
+            <div id=col3 onclick="col3()"></div>
+
+
+
+
+
+          </div>
+        </div>
+
+        <!-- script for the interactable data sets, when clicked they will run the animtation -->
+        <script>
+          function col1() {
+            document.getElementById("col1").style.animationPlayState = "running";
+          }
+          function col2() {
+            document.getElementById("col2").style.animationPlayState = "running";
+          }
+          function col3() {
+            document.getElementById("col3").style.animationPlayState = "running";
+          }
+        </script>
+
+
+
+        <!-- Quiz screen (scene5) -->
+        <div id="scene5" class="collapse" data-parent="#stage">
+          <h2 class="slide">Quick Sort</h2>
+          <p> Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Suspendisse ac ligula suscipit, aliquet
+            diam
+            id, sollicitudin sapien.
+            Phasellus eu ligula sit <b>amet nulla luctus</b> tempor. Vestibulum convallis elit non suscipit ultrices.
+            Aliquam id tellus sollicitudin, laoreet orci vel, pharetra tellus. Maecenas consequat auctor felis, sed
+            tincidunt sem sodales et.
+            Aenean ac aliquam lectus. <b>Vivamus tincidunt</b>, elit et aliquam pellentesque, ligula augue semper velit,
+            <b>eget vestibulum nisl</b> turpis a nisi.
+            Donec ac mauris quis urna dapibus sagittis. Morbi venenatis, mauris non mattis ultricies, velit mauris
+            luctus
+            magna, id blandit neque diam id mi.
+            <br><br>
+
+            Mauris vestibulum cursus bibendum. Donec commodo lectus vel dui vehicula consequat. Orci varius natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Praesent <b>feugiat vulputate elit a porta</b>. Integer vulputate nulla diam, et auctor neque consectetur
+            nec.
+            Donec et vehicula ex.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <b>Morbi fermentum
+              lacinia</b> nibh at congue.
+            Fusce gravida, risus et sollicitudin bibendum, neque lacus ultrices risus, id mollis massa enim sed massa.
+            Nulla
+            dignissim id sapien id condimentum.
+            Donec hendrerit quam sit amet sem placerat posuere. Fusce laoreet et nisi nec efficitur. Suspendisse <b>sed
+              dui
+              nec ipsum</b> tristique porttitor.
+            Vivamus consequat eros maximus, finibus sapien nec, egestas nunc.<br><br> </p>
+
+          <!-- script for the interactable data sets, when clicked they will run the animtation, turning button red/green and rotating -->
+          <div class="imgContainer">
+            <h2 class="slide">This will be a question, there are multiple choice answers below. Please click one</h2>
+            <img src="assignMedia/blank.jpg" width=500 height=400 alt="A blank image">
+            <div id=qBut1 onclick="incButton1()">
+              <div class="btnText">Incorrect Answer</div>
+            </div>
+            <div id=qBut2 onclick="incButton2()">
+              <div class="btnText">Incorrect Answer</div>
+            </div>
+            <div id=qBut3 onclick="cButton()">
+              <div class="btnText">Correct Answer</div>
+            </div>
+            <div id=qBut4 onclick="incButton3()">
+              <div class="btnText">Incorrect Answer</div>
+            </div>
+
+            <!-- script for the interactable quiz buttons, when clicked they will run the animtation -->
+            <script>
+              function incButton1() {
+                document.getElementById("qBut1").style.animationPlayState = "running";
+              }
+              function incButton2() {
+                document.getElementById("qBut2").style.animationPlayState = "running";
+              }
+              function incButton3() {
+                document.getElementById("qBut4").style.animationPlayState = "running";
+              }
+              function cButton() {
+                document.getElementById("qBut3").style.animationPlayState = "running";
+              }
+
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+  <!-- footer at the bottom of the page -->
+  <footer>
+    <p>Author: Bruce Spence, October 2020.</p>
+  </footer>
+
+
+
+</body>
+
+</html>
